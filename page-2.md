@@ -1,0 +1,26 @@
+### 常用头文件
+
+| 头文件               | 说明                    | 主要功能                                             |
+| :---------------- | :-------------------- | :----------------------------------------------- |
+| `<bits/stdc++.h>` | 万能头文件（仅限竞赛使用，实际开发不推荐） | 包含几乎所有标准库                                        |
+| `<iostream>`      | 标准输入输出流               | `cin`, `cout`, `cerr`, `clog`                    |
+| `<cstdio>`        | C 风格标准输入输出            | `printf`, `scanf`, `getchar`, `putchar`          |
+| `<cmath>`         | C 数学函数                | `sqrt`, `pow`, `sin`, `cos`, `log`, `exp` 等      |
+| `<iomanip>`       | 输入输出流格式化控制            | `setw`, `setprecision`, `setfill`                |
+| `<limits>`        | 类型极限值                 | `numeric_limits<int>::max()`                     |
+| `<string>`        | 字符串                   | `string`, `getline`, `substr`, `find`            |
+| `<algorithm>`     | 算法库                   | `sort`, `binary_search`, `max`, `min`, `reverse` |
+| `<vector>`        | 动态数组                  | `vector<T>`                                      |
+| `<queue>`         | 队列与优先队列               | `queue<T>`, `priority_queue<T>`                  |
+| `<stack>`         | 栈                     | `stack<T>`                                       |
+| `<deque>`         | 双端队列                  | `deque<T>`                                       |
+| `<map>`           | 映射（红黑树）               | `map<K,V>`, `multimap<K,V>`                      |
+| `<unordered_map>` | 哈希映射                  | `unordered_map<K,V>`                             |
+| `<set>`           | 集合（红黑树）               | `set<T>`, `multiset<T>`                          |
+| `<unordered_set>` | 哈希集合                  | `unordered_set<T>`                               |
+| `<utility>`       | 通用工具                  | `pair<T1,T2>`, `swap`, `move`                    |
+| `<functional>`    | 函数对象                  | `greater<T>`, `less<T>`, `function`              |
+| `<cstring>`       | C 风格字符串操作             | `strlen`, `strcpy`, `memset`, `memcpy`           |
+| `<cstdlib>`       | C 标准库工具               | `rand`, `srand`, `atoi`, `malloc`, `qsort`       |
+| `<ctime>`         | 时间与日期                 | `time`, `clock`, `srand(time(0))`                |
+| `<bitset>`        | 位集合                   | `bitset<N>`                                      |

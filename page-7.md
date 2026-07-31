@@ -1,0 +1,156 @@
+### 结构体与类
+
+#### pair 二元组
+
+- **定义**：`pair<类型1, 类型2> a;`
+- **访问**：`a.first` 访问第一个元素，`a.second` 访问第二个元素
+- **比较**：先比较 `first`，`first` 相等时再比较 `second`
+- **创建**：`make_pair(x, y)` 或 `{x, y}`（C++11）
+
+```cpp
+pair<int, string> p = {1, "hello"};
+cout << p.first << " " << p.second; // 输出：1 hello
+```
+
+#### greater\<T\>
+
+- `greater<int>` 是函数对象，用于比较两个值的大小（前者是否大于后者）
+- 常用于优先队列、排序等场景，实现降序排列
+
+```cpp
+priority_queue<int, vector<int>, greater<int>> q; // 小根堆
+sort(a, a + n, greater<int>()); // 降序排序
+```
+
+#### 结构体定义与重载运算符
+
+**方式一：重载小于号 `<`**
+
+```cpp
+struct Node {
+    int x, y;
+    
+    // 重载小于号，用于排序或优先队列
+    bool operator < (const Node& other) const {
+        return x < other.x;  // 按 x 升序
+        // return x > other.x; // 按 x 降序
+    }
+};
+```
+
+**方式二：重载大于号 `>`（与小于号逻辑相反）**
+
+```cpp
+struct Node {
+    int x, y;
+    
+    bool operator > (const Node& other) const {
+        return x > other.x;
+    }
+};
+```
+### 类 (class)
+
+**struct 与 class 的区别**
+
+| | `struct` | `class` |
+| :--- | :--- | :--- |
+| 默认访问权限 | `public` | `private` |
+| 默认继承方式 | `public` | `private` |
+
+**类的基本结构**
+
+```cpp
+class ClassName {
+public:     // 外部可访问
+    // 构造函数、析构函数
+    ClassName() : x(0), y(0) {}
+    ~ClassName() {}
+    
+    // 成员函数
+    int get() const { return x; }
+    void set(int v) { x = v; }
+
+protected:  // 类内和派生类可访问
+    int y;
+
+private:    // 仅类内可访问
+    int x;
+};
+```
+
+**构造与析构**
+
+```cpp
+class A {
+public:
+    A() = default;                    // 默认构造
+    A(int v) : x(v) {}                // 带参构造（初始化列表）
+    A(const A& other) : x(other.x) {} // 拷贝构造
+    ~A() {}                           // 析构
+private:
+    int x;
+};
+```
+
+**const 成员函数**
+
+```cpp
+int get() const { return x; }  // 承诺不修改成员，可被 const 对象调用
+void set(int v) { x = v; }     // 可修改成员
+```
+
+**this 指针**
+
+- 指向当前对象，用于区分同名参数和成员变量
+
+```cpp
+void set(int x) { this->x = x; }
+```
+
+**静态成员**
+
+```cpp
+class Counter {
+    static int cnt;  // 声明，所有对象共享
+public:
+    static int get() { return cnt; }  // 静态函数，只能访问静态成员
+};
+int Counter::cnt = 0;  // 类外定义
+```
+
+**虚函数与多态**
+
+```cpp
+class Base {
+public:
+    virtual void func() { cout << "Base"; }  // 虚函数
+    virtual ~Base() = default;               // 虚析构（重要！）
+};
+
+class Derived : public Base {
+public:
+    void func() override { cout << "Derived"; }  // 重写
+};
+```
+
+**delete 禁用函数**
+
+```cpp
+class A {
+public:
+    A(const A&) = delete;            // 禁止拷贝构造
+    A& operator=(const A&) = delete; // 禁止拷贝赋值
+};
+```
+
+**友元**
+
+```cpp
+class A {
+private:
+    int x;
+    friend void print(const A& a);  // 友元函数可访问私有成员
+};
+void print(const A& a) { cout << a.x; }
+```

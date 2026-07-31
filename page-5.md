@@ -1,0 +1,79 @@
+### 常用数学函数
+
+**注意**：以下函数均定义在 `<cmath>` 头文件中。
+
+#### 绝对值
+| 函数 | 说明 |
+| :--- | :--- |
+| `int abs(int x)` | 求整型 `x` 的绝对值 |
+| `long labs(long x)` | 求长整型 `x` 的绝对值 |
+| `long long llabs(long long x)` | 求长整型 `x` 的绝对值 |
+| `double fabs(double x)` | 求双精度浮点数 `x` 的绝对值 |
+
+#### 指数与对数
+| 函数 | 说明 |
+| :--- | :--- |
+| `double exp(double x)` | 求 `e^x`（自然对数的底数 e 的 x 次幂） |
+| `double exp2(double x)` | 求 `2^x` |
+| `double log(double x)` | 求 `x` 的自然对数（以 e 为底），`x > 0` |
+| `double log10(double x)` | 求 `x` 的常用对数（以 10 为底），`x > 0` |
+| `double log2(double x)` | 求 `x` 的以 2 为底的对数，`x > 0` |
+
+#### 幂与根
+| 函数 | 说明 |
+| :--- | :--- |
+| `double sqrt(double x)` | 求 `x` 的平方根，`x >= 0` |
+| `double cbrt(double x)` | 求 `x` 的立方根 |
+| `double pow(double x, double y)` | 求 `x` 的 `y` 次幂 |
+| `double hypot(double x, double y)` | 求 `sqrt(x^2 + y^2)`（直角三角形斜边） |
+
+#### 取整
+| 函数 | 说明 |
+| :--- | :--- |
+| `double ceil(double x)` | 向上取整，返回不小于 `x` 的最小整数 |
+| `double floor(double x)` | 向下取整，返回不大于 `x` 的最大整数 |
+| `double round(double x)` | 四舍五入到最近的整数 |
+| `double trunc(double x)` | 向零取整，截断小数部分 |
+
+#### 三角函数（角度制为弧度）
+| 函数 | 说明 |
+| :--- | :--- |
+| `double sin(double x)` | 正弦 |
+| `double cos(double x)` | 余弦 |
+| `double tan(double x)` | 正切 |
+
+#### 反三角函数
+| 函数 | 说明 |
+| :--- | :--- |
+| `double asin(double x)` | 反正弦，返回值范围 `[-π/2, π/2]` |
+| `double acos(double x)` | 反余弦，返回值范围 `[0, π]` |
+| `double atan(double x)` | 反正切，返回值范围 `[-π/2, π/2]` |
+| `double atan2(double y, double x)` | 求 `y/x` 的反正切，返回值范围 `[-π, π]`，可处理象限 |
+
+#### 双曲函数
+| 函数 | 说明 |
+| :--- | :--- |
+| `double sinh(double x)` | 双曲正弦 |
+| `double cosh(double x)` | 双曲余弦 |
+| `double tanh(double x)` | 双曲正切 |
+| `double asinh(double x)` | 反双曲正弦 |
+| `double acosh(double x)` | 反双曲余弦，`x >= 1` |
+| `double atanh(double x)` | 反双曲正切，`-1 < x < 1` |
+
+#### 其他常用函数
+| 函数                                     | 说明                           |
+| :------------------------------------- | :--------------------------- |
+| `double fmod(double x, double y)`      | 浮点数取模，返回 `x` 除以 `y` 的余数      |
+| `double remainder(double x, double y)` | 返回 `x` 除以 `y` 的余数（舍入到最接近的整数） |
+| `double copysign(double x, double y)`  | 返回 `x` 的绝对值，符号与 `y` 相同       |
+#### 常用常量(C++20)
+
+| 常量     | 说明                   |
+| :----- | :------------------- |
+| `M_PI` | 圆周率 π（非标准，GCC 可用）    |
+| `M_E`  | 自然对数的底数 e（非标准，GCC 可用 |
+
+**注意**：
+- 所有三角函数和反三角函数的参数和返回值均为**弧度**，不是角度。
+- 角度转弧度：`rad = deg * M_PI / 180.0`
+- 弧度转角度：`deg = rad * 180.0 / M_PI`

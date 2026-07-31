@@ -1,0 +1,47 @@
+# Page 27 
+### 树与图的存储与遍历
+
+- 树和图的两种存储方式，树是特殊的无环连通图。
+
+- 图分为有向图、无向图（无向图可看作有向图的双向边，`a->b`, `b->a`）。
+- 故无向图是特殊的有向图。
+
+- **存储方式（邻接表）**：
+    ```cpp
+    int h[N], e[N], ne[N], idx;
+
+    void add(int a, int b) { // 添加一条 a->b 的边
+        e[idx] = b;
+        ne[idx] = h[a];
+        h[a] = idx++;
+    }
+    ```
+
+- **图的遍历（DFS）**：
+    ```cpp
+    void dfs(int u) {
+        st[u] = true; // 标记 u 已被访问
+        for (int i = h[u]; i != -1; i = ne[i]) {
+            int j = e[i];
+            if (!st[j]) dfs(j);
+        }
+    }
+    ```
+
+- **图的遍历（BFS）**：
+    ```cpp
+    queue<int> q;
+    q.push(1);
+    st[1] = true;
+    while (!q.empty()) {
+        int t = q.front();
+        q.pop();
+        for (int i = h[t]; i != -1; i = ne[i]) {
+            int j = e[i];
+            if (!st[j]) {
+                st[j] = true;
+                q.push(j);
+            }
+        }
+    }
+    ```
