@@ -1,0 +1,1 @@
+import{_ as e,o as l,c as d,a0 as a}from"./chunks/framework.Bmhw_dvp.js";const P=JSON.parse('{"title":"索引","description":"","frontmatter":{},"headers":[],"relativePath":"page-1.md","filePath":"page-1.md"}'),g={name:"page-1.md"};function r(n,t,s,i,f,x){return l(),d("div",null,[...t[0]||(t[0]=[a("",2)])])}const o=e(g,[["render",r]]);export{P as __pageData,o as default};

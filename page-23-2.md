@@ -1,0 +1,63 @@
+# Page 23-2
+### Trie 树（字典树）
+
+**定义**：高效存储和查找字符串的树形数据结构。每个节点代表一个字符，从根到某节点的路径对应一个字符串。
+
+**存储示例**：  
+
+**插入**：从根开始，沿字符向下走，不存在则新建节点，末尾标记。
+
+```cpp
+int son[N][26], cnt[N], idx;
+
+void insert(char *str) {
+    int p = 0;
+    for (int i = 0; str[i]; i++) {
+        int u = str[i] - 'a';
+        if (!son[p][u]) son[p][u] = ++idx;
+        p = son[p][u];
+    }
+    cnt[p]++;  // 以该节点结尾的单词数
+}
+
+bool find(char *str) {
+    int p = 0;
+    for (int i = 0; str[i]; i++) {
+        int u = str[i] - 'a';
+        if (!son[p][u]) return false;
+        p = son[p][u];
+    }
+    return cnt[p] > 0;
+}
+```
+
+
+#### 二进制 Trie 求最大异或对
+
+**问题**：在 N 个整数中选出两个数进行异或运算，求最大结果。
+
+**暴力**：枚举所有数对，O(n²)。
+
+**优化**：将所有数以二进制形式（31位）插入 Trie 树。
+
+对每个数 x，从高位到低位遍历：
+- 若存在与 x 当前位相反的节点（0 找 1，1 找 0），则走向该节点，该位异或结果为 1
+- 若不存在，则走向相同节点，该位异或结果为 0
+
+**时间复杂度**：O(n log V)，V 为值域。
+
+```cpp
+int query(int x) {
+    int p = 0, res = 0;
+    for (int i = 30; i >= 0; i--) {
+        int u = (x >> i) & 1;
+        if (son[p][u ^ 1]) {
+            res |= (1 << i);
+            p = son[p][u ^ 1];
+        } else {
+            p = son[p][u];
+        }
+    }
+    return res;
+}
+```
