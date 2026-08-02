@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as e,a0 as t}from"./chunks/framework.Bmhw_dvp.js";const g=JSON.parse('{"title":"Page 21","description":"","frontmatter":{},"headers":[],"relativePath":"page-21.md","filePath":"page-21.md"}'),n={name:"page-21.md"};function l(p,i,h,k,r,d){return a(),e("div",null,[...i[0]||(i[0]=[t("",3)])])}const E=s(n,[["render",l]]);export{g as __pageData,E as default};
